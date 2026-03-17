@@ -246,7 +246,7 @@ function getLastCheatInfo(
   };
 }
 
-export default function HabitTrackerApp(): React.JSX.Element {
+export default function App(): React.JSX.Element {
   const [progress, setProgress] = useState<ProgressMap>({});
   const [mounted, setMounted] = useState<boolean>(false);
   const [daysVisible, setDaysVisible] = useState<number>(DEFAULT_VISIBLE_DAYS);
@@ -422,15 +422,15 @@ export default function HabitTrackerApp(): React.JSX.Element {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 px-4 py-8 text-white sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-neutral-950 px-3 py-6 text-white sm:px-6 sm:py-8 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-6 rounded-3xl border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur sm:mb-8 sm:p-6">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="mb-2 text-sm font-medium uppercase tracking-[0.25em] text-neutral-400">
                 Lock Back In
               </p>
-              <h1 className="text-3xl font-bold sm:text-4xl">
+              <h1 className="text-2xl font-bold leading-tight sm:text-4xl">
                 Daily Discipline Dashboard
               </h1>
               <p className="mt-3 max-w-2xl text-sm text-neutral-400 sm:text-base">
@@ -439,7 +439,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-row">
               <button
                 onClick={() => setZeroCheatMode((prev) => !prev)}
                 className={`inline-flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-medium transition ${
@@ -463,7 +463,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           <StatCard
             label="Completed Today"
             value={`${completedToday}/4`}
@@ -496,9 +496,9 @@ export default function HabitTrackerApp(): React.JSX.Element {
           />
         </div>
 
-        <div className="mt-8 grid gap-8 xl:grid-cols-[1.05fr_1.45fr]">
-          <section className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl">
-            <div className="mb-5 flex items-center justify-between gap-3">
+        <div className="mt-6 grid gap-6 xl:mt-8 xl:grid-cols-[1.05fr_1.45fr]">
+          <section className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl sm:p-6">
+            <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="text-xl font-semibold">Today</h2>
                 <p className="mt-1 text-sm text-neutral-400">
@@ -510,7 +510,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
                   })}
                 </p>
               </div>
-              <div className="rounded-2xl bg-emerald-500/15 px-3 py-2 text-sm font-medium text-emerald-300">
+              <div className="w-fit rounded-2xl bg-emerald-500/15 px-3 py-2 text-sm font-medium text-emerald-300">
                 {completedToday === 4
                   ? "Perfect day"
                   : `${4 - completedToday} left`}
@@ -554,7 +554,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
               })}
             </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <MiniCard
                 title="This Month"
                 value={`${monthPerformance}%`}
@@ -567,7 +567,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
               />
             </div>
 
-            <div className="mt-6 rounded-3xl border border-white/10 bg-black/20 p-4">
+            <div className="mt-6 rounded-3xl border border-white/10 bg-black/20 p-3 sm:p-4">
               <div className="mb-4 flex items-center gap-2">
                 <AlertTriangle size={16} className="text-amber-300" />
                 <h3 className="text-sm font-semibold text-white">
@@ -575,7 +575,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
                 </h3>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {lastCheatStats.map((habit) => (
                   <div
                     key={habit.key}
@@ -617,8 +617,8 @@ export default function HabitTrackerApp(): React.JSX.Element {
           </section>
 
           <div className="space-y-8">
-            <section className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl">
-              <div className="mb-5 flex items-center justify-between gap-4">
+            <section className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl sm:p-6">
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="text-xl font-semibold">Discipline Heatmap</h2>
                   <p className="mt-1 text-sm text-neutral-400">
@@ -637,10 +637,13 @@ export default function HabitTrackerApp(): React.JSX.Element {
                 </div>
               </div>
 
-              <div className="overflow-x-auto pb-2">
-                <div className="inline-flex gap-2">
+              <div className="-mx-1 overflow-x-auto px-1 pb-2 sm:mx-0 sm:px-0">
+                <div className="inline-flex min-w-max gap-1.5 sm:gap-2">
                   {heatmapWeeks.map((week, weekIndex) => (
-                    <div key={weekIndex} className="flex flex-col gap-2">
+                    <div
+                      key={weekIndex}
+                      className="flex flex-col gap-1.5 sm:gap-2"
+                    >
                       {week.map((day, dayIndex) => {
                         const entry = progress[day.key] || createEmptyDay();
                         const completed = getCompletedCount(entry);
@@ -656,7 +659,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
                               )
                             }
                             title={`${day.fullDate} · ${completed}/4 habits completed`}
-                            className={`h-5 w-5 rounded-md border transition ${getHeatmapTone(entry)} ${
+                            className={`h-4 w-4 rounded-[6px] border transition sm:h-5 sm:w-5 sm:rounded-md ${getHeatmapTone(entry)} ${
                               isToday ? "ring-1 ring-white/60" : ""
                             } ${isLockedDay(day.key) ? "cursor-default" : "hover:scale-105"}`}
                           />
@@ -668,8 +671,8 @@ export default function HabitTrackerApp(): React.JSX.Element {
               </div>
             </section>
 
-            <section className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl">
-              <div className="mb-5 flex items-center justify-between">
+            <section className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl sm:p-6">
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="text-xl font-semibold">History</h2>
                   <p className="mt-1 text-sm text-neutral-400">
@@ -683,7 +686,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {visibleEntries.map(({ key, weekday, label, entry }) => {
                   const dayCompleted = getCompletedCount(entry);
                   const isPerfect = dayCompleted === HABITS.length;
@@ -695,7 +698,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
                   return (
                     <div
                       key={key}
-                      className={`rounded-2xl border p-4 ${
+                      className={`rounded-2xl border p-3 sm:p-4 ${
                         isPerfect
                           ? "border-emerald-500/30 bg-emerald-500/10"
                           : isMissed
@@ -703,10 +706,12 @@ export default function HabitTrackerApp(): React.JSX.Element {
                             : "border-white/10 bg-black/20"
                       } ${isToday ? "ring-1 ring-white/20" : ""}`}
                     >
-                      <div className="mb-3 flex items-start justify-between gap-3">
+                      <div className="mb-3 flex items-start justify-between gap-2 sm:gap-3">
                         <div>
                           <p className="text-sm text-neutral-400">{weekday}</p>
-                          <h3 className="font-semibold">{label}</h3>
+                          <h3 className="text-sm font-semibold sm:text-base">
+                            {label}
+                          </h3>
                         </div>
                         <div className="flex items-center gap-2">
                           {locked && (
@@ -726,7 +731,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
                               key={habit.key}
                               onClick={() => toggleHabit(key, habit.key)}
                               disabled={locked}
-                              className={`rounded-xl border px-2 py-2 text-xs font-medium transition ${
+                              className={`min-h-10 rounded-xl border px-2 py-2 text-[11px] font-medium transition sm:text-xs ${
                                 checked
                                   ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-200"
                                   : locked
@@ -747,7 +752,7 @@ export default function HabitTrackerApp(): React.JSX.Element {
               <div className="mt-6 flex justify-center">
                 <button
                   onClick={loadOlder}
-                  className="rounded-2xl border border-white/10 bg-white/10 px-5 py-3 text-sm transition hover:bg-white/15"
+                  className="w-full rounded-2xl border border-white/10 bg-white/10 px-5 py-3 text-sm transition hover:bg-white/15 sm:w-auto"
                 >
                   Load Older
                 </button>
@@ -767,15 +772,15 @@ function StatCard({
   icon: Icon,
 }: StatCardProps): React.JSX.Element {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl">
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-xl sm:p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm text-neutral-400">{label}</p>
-          <h3 className="mt-2 text-3xl font-bold">{value}</h3>
+          <h3 className="mt-2 text-2xl font-bold sm:text-3xl">{value}</h3>
           <p className="mt-2 text-sm text-neutral-500">{subtext}</p>
         </div>
         {Icon ? (
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-2 text-neutral-300">
+          <div className="shrink-0 rounded-2xl border border-white/10 bg-white/5 p-2 text-neutral-300">
             <Icon size={18} />
           </div>
         ) : null}
@@ -786,9 +791,9 @@ function StatCard({
 
 function MiniCard({ title, value, note }: MiniCardProps): React.JSX.Element {
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+    <div className="rounded-2xl border border-white/10 bg-black/20 p-3 sm:p-4">
       <p className="text-sm text-neutral-400">{title}</p>
-      <p className="mt-2 text-2xl font-bold">{value}</p>
+      <p className="mt-2 text-xl font-bold sm:text-2xl">{value}</p>
       <p className="mt-1 text-xs text-neutral-500">{note}</p>
     </div>
   );
